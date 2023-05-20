@@ -1,0 +1,35 @@
+.card{
+    border: none;
+    border-left: 5px solid #000;
+    margin-top: 50px;
+    border-top-left-radius: 30px;
+}
+
+.bg-primary{
+    background-color: #e9eeff !important;
+    color: #4772fe;
+}
+
+.bg-danger{
+    background-color: #fef0f0 !important;
+    color: #f01414;
+    margin-top: 50px;
+}
+
+.cat-tools{
+    display: none;
+}
+
+.cat-tools i {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.categories-list .card:hover{
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+
+.categories-list .card:hover .cat-tools{
+    display: inline;
+}

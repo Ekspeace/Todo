@@ -1,0 +1,50 @@
+<div class="row justify-content-center md-3">
+    <div class="col-md-4 text-center">
+        <h1>TODO CATEGORIES</h1>
+        <P class="text-info">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        </P>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form #f="ngForm" (ngSubmit)='f.form.valid && onSubmit(f)' class="row">
+            <div class="col-md-10 form-group">
+                <input type="text" placeholder="Add new Categories here" name="CategoryName" class="form-control-plaintext 
+                drop-shadow" [(ngModel)]="categoryName" required #category="ngModel" [ngClass]="{'border-danger': f.submitted && category.invalid }">
+            </div>
+            <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">{{ dataStatus }}</button>
+
+            <div class="text-danger ms-3" *ngIf="f.submitted && category.invalid">
+                Category is Required ...
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor="let category of categories">
+        <div class="card drop-shadow" [style.border-left-color]="category.data.colorCode">
+            <div class="card-body">
+                <div class="clearfix">
+                    <div class="float-start">
+                        <div class="badge bg-primary"> CATEGORY </div>
+                    </div>
+                    <div class="float-end cat-tools">
+                        <small><i class="fa fa-pencil-alt text-success" (click)="onEdit(category.data.category, category.id)"></i></small>
+                        <small><i class="fas fa-trash text-danger" (click)="onDelete(category.id)"></i></small>
+                    </div>
+                </div>
+                <div class="todo-content" [routerLink]= "['/todo/', category.id]">
+                    <h3 [style.color]="category.data.colorCode">{{ category.data.category }}</h3>
+                    <small class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                        Labore suscipit velit dolore ducimus corrupti? Suscipit ea explicabo quisquam, 
+                        rem inventore nobis quibusdam praesentium, repellendus nostrum sunt officiis. Ipsum, iste libero.
+                    </small>
+                </div>
+                <span class="badge bg-danger"> {{ category.data.todoCount }} - Todos </span>
+            </div>
+        </div>
+    </div>
+</div>
